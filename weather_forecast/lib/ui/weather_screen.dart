@@ -16,7 +16,7 @@ class WeatherScreen extends StatelessWidget {
       ),
       body: Container(
         child: InkWell(
-          child: Text(areaModel.area),
+          child: Text(areaModel.areaEntity.area),
           onTap: () {
             Navigator.pushNamed(context, AreaSettingScreen.routeName);
           },

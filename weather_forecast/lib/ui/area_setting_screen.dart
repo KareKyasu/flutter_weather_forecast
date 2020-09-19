@@ -1,12 +1,35 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_forecast/entity/area_entity.dart';
 
 import '../model/area_model.dart';
 
-class AreaSettingScreen extends StatelessWidget {
+class AreaSettingScreen extends StatefulWidget {
   static const routeName = '/area_setting_screen';
-  var listTitles = ['東京', '大阪', "神戸"];
+
+  @override
+  _AreaSettingScreenState createState() => _AreaSettingScreenState();
+}
+
+class _AreaSettingScreenState extends State<AreaSettingScreen> {
+  @override
+  void initState() {
+    super.initState();
+    this.loadLocalJson();
+  }
+
+  List<AreaEntity> areas;
+  Future loadLocalJson() async {
+    String jsonString = await rootBundle.loadString('json/coordinates.json');
+    setState(() {
+      final jsonResponse = json.decode(jsonString)['areas'] as List;
+      areas = jsonResponse.map((area) => AreaEntity.fromJson(area)).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +39,13 @@ class AreaSettingScreen extends StatelessWidget {
         ),
         body: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-            return _areaItem(context, listTitles[index], true);
+            return _areaItem(context, areas[index]);
           },
-          itemCount: listTitles.length,
+          itemCount: areas.length,
         ));
   }
 
-  Widget _areaItem(BuildContext context, String area, bool check) {
+  Widget _areaItem(BuildContext context, AreaEntity area) {
     final areaModel = Provider.of<AreaModel>(context, listen: true);
     return GestureDetector(
       child: Container(
@@ -34,10 +57,12 @@ class AreaSettingScreen extends StatelessWidget {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.all(10.0),
-                child: area == areaModel.area ? Icon(Icons.check) : Icon(null),
+                child: area.area == areaModel.areaEntity.area
+                    ? Icon(Icons.check)
+                    : Icon(null),
               ),
               Text(
-                area,
+                area.area,
                 style: TextStyle(color: Colors.black, fontSize: 18.0),
               ),
             ],

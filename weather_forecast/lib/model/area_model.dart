@@ -1,34 +1,42 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_forecast/data/shared_preference_keys.dart';
+import 'package:weather_forecast/entity/area_entity.dart';
 
 class AreaModel with ChangeNotifier {
-  String _area = '';
-  String get area => _area;
+  AreaEntity _areaEntity;
+  AreaEntity get areaEntity => _areaEntity;
   AreaModel() {
     setup();
   }
   void setup() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // 初回起動ならば東京をセット
+
     if (prefs.getBool(SharedPreferencesKeys.appFirstOpen) ?? true) {
+      // 初回起動ならば東京をセット
       prefs.setBool(SharedPreferencesKeys.appFirstOpen, false);
-      String area = '東京';
-      prefs.setString(SharedPreferencesKeys.settingArea, area);
-      _area = area;
+      AreaEntity areaEntity =
+          AreaEntity(area: '東京都', lon: '139.6917222', lat: '35.68956667');
+      prefs.setString(
+          SharedPreferencesKeys.areaEntity, json.encode(areaEntity));
+      _areaEntity = areaEntity;
       notifyListeners();
     } else {
-      String area =
-          (await prefs.getString(SharedPreferencesKeys.settingArea) ?? '');
-      _area = area;
+      // 二回目以降は最後に設定したものをロード
+      AreaEntity areaEntity = (await AreaEntity.fromJson(
+              json.decode(prefs.getString(SharedPreferencesKeys.areaEntity))) ??
+          AreaEntity(area: '東京都', lon: '139.6917222', lat: '35.68956667'));
+      _areaEntity = areaEntity;
       notifyListeners();
     }
   }
 
-  void update(String area) async {
+  void update(AreaEntity areaEntity) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(SharedPreferencesKeys.settingArea, area);
-    _area = area;
+    prefs.setString(SharedPreferencesKeys.areaEntity, json.encode(areaEntity));
+    _areaEntity = areaEntity;
     notifyListeners();
   }
 }

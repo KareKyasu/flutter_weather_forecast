@@ -15,11 +15,16 @@ class WeatherScreen extends StatelessWidget {
         title: Text("天気予報"),
       ),
       body: Container(
-        child: InkWell(
-          child: Text(areaModel.areaEntity.area),
-          onTap: () {
-            Navigator.pushNamed(context, AreaSettingScreen.routeName);
-          },
+        child: Column(
+          children: <Widget>[
+            InkWell(
+              child: Text(areaModel.areaEntity.area ?? ""),
+              onTap: () {
+                Navigator.pushNamed(context, AreaSettingScreen.routeName);
+              },
+            ),
+            Text(areaModel.weatherResponse ?? ""),
+          ],
         ),
       ),
     );

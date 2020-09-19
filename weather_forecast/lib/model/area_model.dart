@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather_forecast/api/weather_api.dart';
 import 'package:weather_forecast/data/shared_preference_keys.dart';
 import 'package:weather_forecast/entity/area_entity.dart';
+import 'package:weather_forecast/entity/weather_entity.dart';
 import 'package:weather_forecast/repository/weather_repository.dart';
 
 class AreaModel with ChangeNotifier {
@@ -15,8 +16,8 @@ class AreaModel with ChangeNotifier {
     weatherRepository = WeatherRepository(WeatherApi());
     setup();
   }
-  String _weatherResponse;
-  String get weatherResponse => _weatherResponse;
+  WeatherEntity _weatherEntity;
+  WeatherEntity get weatherEntity => _weatherEntity;
 
   void setup() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -51,6 +52,6 @@ class AreaModel with ChangeNotifier {
   }
 
   void getWeather() async {
-    _weatherResponse = await weatherRepository.getWeather(_areaEntity);
+    _weatherEntity = await weatherRepository.getWeather(_areaEntity);
   }
 }

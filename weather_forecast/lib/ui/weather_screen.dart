@@ -23,7 +23,20 @@ class WeatherScreen extends StatelessWidget {
                 Navigator.pushNamed(context, AreaSettingScreen.routeName);
               },
             ),
-            Text(areaModel.weatherResponse ?? ""),
+            Image.network(
+              areaModel.weatherEntity != null
+                  ? "http://openweathermap.org/img/wn/" +
+                      areaModel.weatherEntity.icon +
+                      ".png"
+                  : "",
+              fit: BoxFit.contain,
+            ),
+            Text(areaModel.weatherEntity != null
+                ? "最低気温 " + areaModel.weatherEntity.min_temp.toStringAsFixed(2)
+                : ""),
+            Text(areaModel.weatherEntity != null
+                ? "最高気温 " + areaModel.weatherEntity.max_temp.toStringAsFixed(2)
+                : ""),
           ],
         ),
       ),

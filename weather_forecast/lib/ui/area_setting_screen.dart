@@ -22,7 +22,7 @@ class _AreaSettingScreenState extends State<AreaSettingScreen> {
     this.loadLocalJson();
   }
 
-  List<AreaEntity> areas;
+  List<AreaEntity> areas = List(47);
   Future loadLocalJson() async {
     String jsonString = await rootBundle.loadString('json/coordinates.json');
     setState(() {
@@ -41,7 +41,7 @@ class _AreaSettingScreenState extends State<AreaSettingScreen> {
           itemBuilder: (BuildContext context, int index) {
             return _areaItem(context, areas[index]);
           },
-          itemCount: areas.length,
+          itemCount: 47,
         ));
   }
 
@@ -62,7 +62,7 @@ class _AreaSettingScreenState extends State<AreaSettingScreen> {
                     : Icon(null),
               ),
               Text(
-                area.area,
+                area.area ?? "",
                 style: TextStyle(color: Colors.black, fontSize: 18.0),
               ),
             ],

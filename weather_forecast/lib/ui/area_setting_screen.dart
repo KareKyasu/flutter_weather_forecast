@@ -63,7 +63,6 @@ class _AreaSettingScreenState extends State<AreaSettingScreen> {
               ),
               Text(
                 area.area ?? "",
-                style: TextStyle(color: Colors.black, fontSize: 18.0),
               ),
             ],
           )),

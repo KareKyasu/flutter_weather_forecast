@@ -15,6 +15,7 @@ dependencies:
   provider: ^4.3.2+2
   http: ^0.12.2
   flutter_dotenv: ^2.1.0
+  lottie: ^0.6.0
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +24,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/
     - json/
     - .env

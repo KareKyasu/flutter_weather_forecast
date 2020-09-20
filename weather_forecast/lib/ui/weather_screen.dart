@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_forecast/model/area_model.dart';
 import 'package:weather_forecast/ui/area_setting_screen.dart';
@@ -38,16 +39,9 @@ class WeatherScreen extends StatelessWidget {
               ],
             ),
             Center(
-              child: Image.network(
-                areaModel.weatherEntity != null
-                    ? "http://openweathermap.org/img/wn/" +
-                        areaModel.weatherEntity.icon +
-                        ".png"
-                    : "",
-                fit: BoxFit.contain,
-                width: 300,
-                height: 300,
-              ),
+              child: areaModel.weatherEntity != null
+                  ? Lottie.asset(areaModel.weatherEntity.getLottieJson())
+                  : Text(""),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

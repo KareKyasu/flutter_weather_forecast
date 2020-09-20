@@ -47,8 +47,8 @@ class AreaModel with ChangeNotifier {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(SharedPreferencesKeys.areaEntity, json.encode(areaEntity));
     _areaEntity = areaEntity;
-    getWeather();
-    notifyListeners();
+    await getWeather();
+    await notifyListeners();
   }
 
   void getWeather() async {

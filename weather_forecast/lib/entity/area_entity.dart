@@ -4,10 +4,9 @@ class AreaEntity {
   String lat;
   AreaEntity({this.area, this.lon, this.lat});
 
-  AreaEntity.fromJson(Map<String, dynamic> json)
-      : area = json['area'],
-        lon = json['lon'],
-        lat = json['lat'];
+  factory AreaEntity.fromJson(Map<String, dynamic> json) {
+    return AreaEntity(area: json['area'], lon: json['lon'], lat: json['lat']);
+  }
 
   Map<String, dynamic> toJson() => {
         'area': area,

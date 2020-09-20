@@ -30,6 +30,8 @@ class WeatherScreen extends StatelessWidget {
                       ".png"
                   : "",
               fit: BoxFit.contain,
+              width: 300,
+              height: 300,
             ),
             Text(areaModel.weatherEntity != null
                 ? "最低気温 " + areaModel.weatherEntity.min_temp.toStringAsFixed(2)

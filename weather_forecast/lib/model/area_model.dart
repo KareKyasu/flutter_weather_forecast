@@ -30,16 +30,16 @@ class AreaModel with ChangeNotifier {
       prefs.setString(
           SharedPreferencesKeys.areaEntity, json.encode(areaEntity));
       _areaEntity = areaEntity;
-      getWeather();
-      notifyListeners();
+      await getWeather();
+      await notifyListeners();
     } else {
       // 二回目以降は最後に設定したものをロード
       AreaEntity areaEntity = (await AreaEntity.fromJson(
               json.decode(prefs.getString(SharedPreferencesKeys.areaEntity))) ??
           AreaEntity(area: '東京都', lon: '139.6917222', lat: '35.68956667'));
       _areaEntity = areaEntity;
-      getWeather();
-      notifyListeners();
+      await getWeather();
+      await notifyListeners();
     }
   }
 

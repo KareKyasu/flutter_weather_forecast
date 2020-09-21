@@ -16,6 +16,7 @@ dependencies:
   http: ^0.12.2
   flutter_dotenv: ^2.1.0
   lottie: ^0.6.0
+  flutter_launcher_icons: ^0.8.0
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +27,9 @@ flutter:
   assets:
     - json/
     - .env
+    - icon/
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "icon/icon.png"

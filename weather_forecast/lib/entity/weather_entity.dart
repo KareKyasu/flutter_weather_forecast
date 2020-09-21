@@ -15,8 +15,6 @@ class WeatherEntity {
   }
 
   String getLottieJson() {
-    print("hereeeeeeee");
-    print(this.weather_type);
     switch (this.weather_type) {
       case 'Thunderstorm':
         return "json/4803-weather-storm.json";

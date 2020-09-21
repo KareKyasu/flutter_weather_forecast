@@ -26,10 +26,12 @@ class WeatherScreen extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Icon(Icons.place),
-                      Text(
-                        areaModel.areaEntity.area ?? "",
-                        style: TextStyle(fontSize: 20.0),
-                      ),
+                      areaModel.areaEntity != null
+                          ? Text(
+                              areaModel.areaEntity.area,
+                              style: TextStyle(fontSize: 20.0),
+                            )
+                          : Text(""),
                     ],
                   ),
                   onTap: () {

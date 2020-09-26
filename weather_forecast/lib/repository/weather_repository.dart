@@ -7,6 +7,6 @@ class WeatherRepository {
   const WeatherRepository(this.weatherApi);
 
   Future<WeatherEntity> getWeather(AreaEntity areaEntity) async {
-    return await weatherApi.getWeather(areaEntity);
+    return weatherApi.getWeather(areaEntity);
   }
 }

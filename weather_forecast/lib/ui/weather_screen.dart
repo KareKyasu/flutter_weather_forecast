@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_forecast/model/area_model.dart';
 import 'package:weather_forecast/ui/area_setting_screen.dart';
+import 'package:weather_forecast/ui/weather_map_screen.dart';
 
 class WeatherScreen extends StatelessWidget {
   static const routeName = '/weather_screen';
@@ -20,8 +21,18 @@ class WeatherScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                RaisedButton(
+                  child: Text("雨雲レーダー"),
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, WeatherMapScreen.routeName);
+                  },
+                ),
                 InkWell(
                   child: Row(
                     children: <Widget>[

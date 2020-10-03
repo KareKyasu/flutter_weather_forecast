@@ -68,7 +68,7 @@ class AreaModel with ChangeNotifier {
     Location location = new Location();
     LocationData _locationData = await location.getLocation();
     return [
-      _locationData.longitude.toString(),
+      (_locationData.longitude).toString(),
       _locationData.latitude.toString()
     ];
   }
@@ -102,6 +102,8 @@ class AreaModel with ChangeNotifier {
       areaEntity.lon = loc[0];
       areaEntity.lat = loc[1];
     }
+    print("lon" + areaEntity.lon);
+    print("lat" + areaEntity.lat);
     prefs.setString(SharedPreferencesKeys.areaEntity, json.encode(areaEntity));
     _areaEntity = areaEntity;
     _weatherEntity = await getWeather();

@@ -18,6 +18,8 @@ dependencies:
   lottie: ^0.6.0
   flutter_launcher_icons: ^0.8.0
   location: ^3.0.2
+  google_maps_flutter: ^0.5.33
+
 
 dev_dependencies:
   flutter_test:

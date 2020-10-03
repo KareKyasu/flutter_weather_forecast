@@ -45,5 +45,7 @@
     <string>Your location is required for this app</string> // 追加
     <key>NSLocationWhenInUseUsageDescription</key>          // 追加
     <string>Your location is required for this app</string> // 追加
+    <key>io.flutter.embedded_views_preview</key>
+    <true/>
 </dict>
 </plist>

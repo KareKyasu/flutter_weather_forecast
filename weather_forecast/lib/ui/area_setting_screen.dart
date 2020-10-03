@@ -35,6 +35,7 @@ class _AreaSettingScreenState extends State<AreaSettingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final areaModel = Provider.of<AreaModel>(context, listen: true);
     return Scaffold(
         appBar: AppBar(
           title: Text("地域設定"),
@@ -42,18 +43,17 @@ class _AreaSettingScreenState extends State<AreaSettingScreen> {
         body: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
             if (index == 0) {
-              return _areaItem(context,
+              return _areaItem(context, areaModel,
                   AreaEntity(area: CurrentLocation.area, lon: null, lat: null));
             } else {
-              return _areaItem(context, areas[index - 1]);
+              return _areaItem(context, areaModel, areas[index - 1]);
             }
           },
           itemCount: 48,
         ));
   }
 
-  Widget _areaItem(BuildContext context, AreaEntity area) {
-    final areaModel = Provider.of<AreaModel>(context, listen: true);
+  Widget _areaItem(BuildContext context, AreaModel areaModel, AreaEntity area) {
     return GestureDetector(
       child: Container(
           padding: EdgeInsets.all(8.0),

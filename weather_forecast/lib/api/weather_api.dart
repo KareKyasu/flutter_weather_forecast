@@ -16,7 +16,7 @@ class WeatherApi {
         "&lon=" +
         areaEntity.lon +
         "&appid=" +
-        DotEnv().env['API_KEY'].toString());
+        DotEnv().env['OPENWEATHERMAP_API_KEY'].toString());
 
     return WeatherEntity.fromJson(json.decode(response.body));
   }

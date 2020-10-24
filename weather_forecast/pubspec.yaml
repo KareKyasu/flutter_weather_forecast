@@ -18,7 +18,9 @@ dependencies:
   lottie: ^0.6.0
   flutter_launcher_icons: ^0.8.0
   location: ^3.0.2
-  google_maps_flutter: ^0.5.33
+  flutter_map: 0.10.1+1
+  latlong: ^0.6.1
+
 
 
 dev_dependencies:
@@ -29,6 +31,7 @@ flutter:
   uses-material-design: true
   assets:
     - json/
+    - json/map_styles/
     - .env
     - icon/
 

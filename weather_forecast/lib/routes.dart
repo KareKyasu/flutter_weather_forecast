@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_forecast/ui/area_setting_screen.dart';
-import 'package:weather_forecast/ui/weather_map_screen.dart';
+import 'package:weather_forecast/ui/mapbox_screen.dart';
 import 'package:weather_forecast/ui/weather_screen.dart';
 
 class Routes {
@@ -15,9 +15,9 @@ class Routes {
         return CupertinoPageRoute(
           builder: (context) => AreaSettingScreen(),
         );
-      case WeatherMapScreen.routeName:
+      case MapboxScreen.routeName:
         return CupertinoPageRoute(
-          builder: (context) => WeatherMapScreen(),
+          builder: (context) => MapboxScreen(),
         );
       default:
         return null;

@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_forecast/model/area_model.dart';
 import 'package:weather_forecast/ui/area_setting_screen.dart';
-import 'package:weather_forecast/ui/weather_map_screen.dart';
+import 'package:weather_forecast/ui/mapbox_screen.dart';
 
 class WeatherScreen extends StatelessWidget {
   static const routeName = '/weather_screen';
@@ -30,7 +30,7 @@ class WeatherScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, WeatherMapScreen.routeName);
+                    Navigator.pushNamed(context, MapboxScreen.routeName);
                   },
                 ),
                 InkWell(
